@@ -36,7 +36,6 @@ class FileUpload extends Component {
             </Dropzone>
           </div>
         </div>
-        <aside>
           <h2>Dropped files</h2>
           <p>Data</p>
           <ul>
@@ -50,7 +49,6 @@ class FileUpload extends Component {
               this.state.labels.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
             }
           </ul>
-        </aside>
       </section>
     );
   }

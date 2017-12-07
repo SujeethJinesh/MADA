@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import FileUpload from './FileUpload.js';
+import Button from '../node_modules/muicss/lib/react/button';
 
 class App extends Component {
   render() {
@@ -12,6 +13,10 @@ class App extends Component {
         </header>
         <div className="wrapper">
           <FileUpload/>
+        </div>
+        <div>
+          {/* TODO: Fix Submit Button Styling */}
+          <Button variant='raised' color='primary'>Submit</Button>
         </div>
       </div>
     );
