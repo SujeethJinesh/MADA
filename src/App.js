@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import FileUpload from './FileUpload.js';
 import Button from '../node_modules/muicss/lib/react/button';
-import './mui.css';
+import '../node_modules/muicss/dist/css/mui.css'; // need to maintain this for button styling >:(
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           <FileUpload/>
         </div>
         <div>
-          {/* TODO: Fix Submit Button Styling */}
+          {/* TODO: Add functionality to button */}
           <Button variant='raised' color='primary'>Submit</Button>
         </div>
       </div>
