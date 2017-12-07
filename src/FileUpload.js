@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone'
-import './App.css'
+import Dropzone from 'react-dropzone';
+import './App.css';
 
 class FileUpload extends Component {
   constructor() {
@@ -8,9 +8,15 @@ class FileUpload extends Component {
     this.state = { data: [], labels: [] }
   }
 
-  onDrop(data) {
+  onDropData(data) {
     this.setState({
       data
+    });
+  }
+
+  onDropLabels(labels) {
+    this.setState({
+      labels
     });
   }
 
@@ -19,22 +25,29 @@ class FileUpload extends Component {
       <section>
         <div className='rows'>
           <div>
-            <Dropzone onDrop={this.onDrop.bind(this)}>
-              <p> Upload up to 1 mb of your training data </p>
+            {/* TODO: Decide if you should support multiple files */}
+            <Dropzone onDrop={this.onDropData.bind(this)}>
+              <p> Upload up to 1 mb of your training data (single file) </p>
             </Dropzone>
           </div>
           <div>
-            {/* TODO: Bind these two to their own state objects. I.e. Data and Labels */}
-            <Dropzone onDrop={this.onDrop.bind(this)}>
+            <Dropzone onDrop={this.onDropLabels.bind(this)}>
               <p> Upload up to 1 mb of your training labels </p>
             </Dropzone>
           </div>
         </div>
         <aside>
           <h2>Dropped files</h2>
+          <p>Data</p>
           <ul>
             {
               this.state.data.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+            }
+          </ul>
+          <p>Labels</p>
+          <ul>
+            {
+              this.state.labels.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
             }
           </ul>
         </aside>
