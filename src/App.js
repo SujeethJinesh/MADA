@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import FileUpload from './FileUpload.js';
 import Button from '../node_modules/muicss/lib/react/button';
+import './mui.css';
 
 class App extends Component {
   render() {
