@@ -22,3 +22,4 @@
 /front_end/bower_components/
 
 .DS_Store
+.idea/
