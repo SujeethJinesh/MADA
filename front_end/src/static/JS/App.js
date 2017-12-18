@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import '../css/App.css';
 import FileUpload from './FileUpload.js';
-import Button from '../node_modules/muicss/lib/react/button';
-import '../node_modules/muicss/dist/css/mui.css'; // need to maintain this for button styling >:(
+import Button from '../../../node_modules/muicss/lib/react/button';
+import '../../../node_modules/muicss/dist/css/mui.css'; // need to maintain this for button styling >:(
 
 class App extends Component {
   render() {

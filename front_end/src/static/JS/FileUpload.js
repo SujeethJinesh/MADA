@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
-import './App.css';
+import '../css/App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
@@ -50,7 +50,6 @@ class FileUpload extends Component {
       <section>
         <div className='rows'>
           <div>
-            {/* TODO: Decide if you should support multiple files */}
             <Dropzone onDrop={this.onDropData.bind(this)}>
               <p> Upload up to 1 mb of your training data (single file) </p>
             </Dropzone>
