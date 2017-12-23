@@ -1,3 +1,4 @@
+Taken from: https://github.com/bonniee/react-flask.
 
 # React + Flask starter kit
 
