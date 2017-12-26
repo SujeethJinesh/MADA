@@ -1,0 +1,29 @@
+This is a doc for me to just jot down random notes
+
+Taken from README
+
+1) To install dependencies and stuff.
+
+```
+pip install virtualenv
+virtualenv venv; source venv/bin/activate
+pip install -r requirements.txt
+npm install -g webpack; npm install
+```
+
+2) Webpack is complicated. If you have trouble loading some types of files, check webpack. You need to use a specific type of loader
+
+Example:
+
+module: {
+    loaders: [
+      {
+      test: /\.svg$/,
+      loader: "file-loader"
+      }
+
+This is for loading any .svg files
+
+3) use `python3 app.py` to run the local server
+
+4) use `webpack --watch` to watch files you are changing and see errors.

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from '../static/css/logo.svg';
+// import Logo from '../static/logo.svg';
 import '../static/css/App.css';
 import FileUpload from './FileUpload.js';
 import Button from '../node_modules/muicss/lib/react/button';
@@ -10,7 +10,8 @@ class Main extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={<Logo/>} className="App-logo" alt="logo" />
+          {/*<img src={Logo} className="App-logo" alt="logo" />*/}
+          {/*<Logo/>*/}
         </header>
         <div className="wrapper">
           <FileUpload/>

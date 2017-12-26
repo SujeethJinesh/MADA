@@ -7,6 +7,8 @@ module.exports = {
     path: __dirname + '/static',
     filename: "bundle.js"
   },
+  debug: true,
+  devtool: "#eval-source-map",
   module: {
     loaders: [
       {
@@ -22,7 +24,10 @@ module.exports = {
             exclude: /^node_modules$/,
             loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader',
         },
-        { test: /\.svg$/, loader: "file-loader" }
+        {
+            test: /\.svg$/,
+            loader: 'svg-inline-loader'
+        }
     ],
       resolve: {
         extensions: ['', '.js', '.jsx', '.css', '.svg'],

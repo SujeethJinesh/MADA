@@ -14,16 +14,20 @@ class FileUpload extends Component {
     }
   }
 
-  onDropData(data) {
-    this.setState({
-        data
-    });
+  onDropData(acceptedData, rejectedData) {
+      if (acceptedData != null && acceptedData[0].size <= 500000) {
+        this.setState({
+            data: acceptedData
+        });
+      }
   }
 
-  onDropLabels(labels) {
-    this.setState({
-        labels
-    });
+  onDropLabels(acceptedLabels, rejectedLabels) {
+    if (acceptedLabels != null && acceptedLabels[0].size <= 500000) {
+        this.setState({
+            labels: acceptedLabels
+        });
+    }
   }
 
   renderJSX(item) {
@@ -50,12 +54,12 @@ class FileUpload extends Component {
       <section>
         <div className='rows'>
           <div>
-            <Dropzone onDrop={this.onDropData.bind(this)}>
+            <Dropzone accept="text/plain, text/csv" onDrop={this.onDropData.bind(this)}>
               <p> Upload up to 1 mb of your training data (single file) </p>
             </Dropzone>
           </div>
           <div>
-            <Dropzone onDrop={this.onDropLabels.bind(this)}>
+            <Dropzone accept="text/plain, text/csv" onDrop={this.onDropLabels.bind(this)}>
               <p> Upload up to 1 mb of your training labels </p>
             </Dropzone>
           </div>
