@@ -27,3 +27,10 @@ This is for loading any .svg files
 3) use `python3 app.py` to run the local server
 
 4) use `webpack --watch` to watch files you are changing and see errors.
+
+5) in order to start debugging in webpack, add this to webpack. then look at the sources in the website. There will be a webpack folder and a . folder
+
+```
+  debug: true,
+  devtool: "#eval-source-map",
+```

@@ -3,7 +3,9 @@ import Dropzone from 'react-dropzone';
 import '../static/css/App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import FontIcon from 'material-ui/FontIcon';
-import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+import {blue500} from 'material-ui/styles/colors';
+import {Button} from "muicss/react";
+import axios from 'axios';
 
 class FileUpload extends Component {
   constructor() {
@@ -11,7 +13,21 @@ class FileUpload extends Component {
     this.state = {
         data: [],
         labels: []
-    }
+    };
+    this.upload_data = this.upload_data.bind(this);
+  }
+
+  upload_data() {
+      console.log("yooooo");
+
+      axios.post('/upload_data', {
+          'data': this.state.data,
+          'labels': this.state.labels
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
   }
 
   onDropData(acceptedData, rejectedData) {
@@ -30,7 +46,7 @@ class FileUpload extends Component {
     }
   }
 
-  renderJSX(item) {
+  static renderJSX(item) {
     return (
         <div>
             {item["f"].name}
@@ -68,15 +84,19 @@ class FileUpload extends Component {
           <p>Data</p>
             <ul>
              {
-                this.state.data.map(f => <li key={f.name}>{this.renderJSX({f})}</li>)
+                this.state.data.map(f => <li key={f.name}>{FileUpload.renderJSX({f})}</li>)
              }
              </ul>
           <p>Labels</p>
           <ul>
             {
-              this.state.labels.map(f => <li key={f.name}>{this.renderJSX({f})}</li>)
+              this.state.labels.map(f => <li key={f.name}>{FileUpload.renderJSX({f})}</li>)
             }
           </ul>
+          <div>
+          {/* TODO: Add functionality to button */}
+            <Button variant='raised' color='primary' onClick={this.upload_data}>Submit</Button>
+          </div>
       </section>
     );
   }
