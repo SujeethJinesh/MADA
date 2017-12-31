@@ -14,12 +14,13 @@ def upload_data():
         import ipdb;
         ipdb.set_trace()
 
-        #TODO: make sure to use request.files['data']. Currently not in right format.
-        data_labels_dict = request.get_json()
-        data = data_labels_dict['data'][0]['preview']
-        labels = data_labels_dict['labels'][0]['preview']
+        data = request.files['data']
+        labels = request.files['labels']
 
-        # data.save('/var/www/uploads/uploaded_file.txt')
+        # TODO: update this for dev server
+        data.save('/Users/sujeethjinesh/Desktop/data1.txt')
+        labels.save('/Users/sujeethjinesh/Desktop/labels1.txt')
+
     return "it works"
 
 

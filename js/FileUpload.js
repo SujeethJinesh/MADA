@@ -18,11 +18,20 @@ class FileUpload extends Component {
   }
 
   upload_data() {
-      console.log("yooooo");
+      console.log("POST start");
 
-      axios.post('/upload_data', {
-          'data': this.state.data,
-          'labels': this.state.labels
+      let formData = new FormData();
+
+      let data = this.state.data[0];
+      let labels = this.state.labels[0];
+
+      formData.append("data", data);
+      formData.append("labels", labels);
+
+      axios.post('/upload_data', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
