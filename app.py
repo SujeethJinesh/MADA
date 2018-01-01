@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
-import os
 import uuid
 import argparse
 
@@ -15,7 +14,7 @@ DEV = args.dev
 
 
 @app.route('/')
-def hello_world():
+def main():
     return render_template('index.html')
 
 

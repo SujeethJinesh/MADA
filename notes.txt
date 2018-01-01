@@ -34,3 +34,13 @@ This is for loading any .svg files
   debug: true,
   devtool: "#eval-source-map",
 ```
+
+6) can run app (with dev option) with `python3 app.py -dev`
+
+7) To auto upload in pycharm to dev server:
+    a) cmd + ,
+    b) build, execution, deployment
+    c) deployment
+    d) May wanna change the root path depending on what you wanna do (/var/www/<your project>)
+
+8) To do server stuff with apache --> https://pythonprogramming.net/creating-first-flask-web-app/
