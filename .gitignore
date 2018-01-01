@@ -21,6 +21,7 @@
 /yarn-error.log*
 /bower_components/
 
+/uploads/
 .git/
 .DS_Store
 .idea/
