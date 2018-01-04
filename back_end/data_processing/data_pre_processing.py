@@ -10,11 +10,19 @@ from sklearn.model_selection import train_test_split
 '''
 
 
-# TODO: Figure out how to properly pass in the file read in from the front end to here.
 # TODO: Have a different pipeline for data that has multiple output features.
+# TODO: Have some parameters to determine which line(s) to skip. I.E. first row might be labels that are useless
+# TODO: Same as above with columns, cause could be irrelevant (in this case names)
+# TODO: ask for user input about which col is the results (default would be last one)
 def pre_process_data(file):
     # Importing the dataset
-    dataset = pd.read_csv(file)
+    dataset = pd.read_csv('uploads/' + file)
+
+    # import ipdb;
+    # ipdb.set_trace()
+
+    # TODO: RESTART OVER HERE, NEED TO FIGURE OUT HELLA PRE PROCESSING, also figure out the stuff on the front end from above
+
     X = dataset.iloc[:, :-1].values  # These are the features
     y = dataset.iloc[:, -1].values  # This is the result
 
@@ -65,3 +73,5 @@ def pre_process_data(file):
     sc_X = StandardScaler()
     X_train = sc_X.fit_transform(X_train)
     X_test = sc_X.fit_transform(X_test)
+
+    return X_train, X_test, y_train, y_test

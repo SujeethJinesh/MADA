@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from werkzeug.utils import secure_filename
 import uuid
 import argparse
+from back_end.data_processing.data_pre_processing import pre_process_data
 
 # Check if being run on dev (production by default)
 parser = argparse.ArgumentParser()
@@ -30,9 +31,6 @@ def upload_data():
         data_filename = secure_filename(str(uuid.uuid4()) + '.txt')
         labels_filename = secure_filename(str(uuid.uuid4()) + '.txt')
 
-        # import ipdb;
-        # ipdb.set_trace()
-
         upload_address = '/var/www/MADA/uploads'
 
         if DEV:
@@ -44,7 +42,24 @@ def upload_data():
         data_file.save(data_address)
         labels_file.save(labels_address)
 
-    return "it works!!!"
+        analysis(data_filename, labels_filename)
+
+        # import ipdb; ipdb.set_trace()
+
+        return redirect(url_for('processed_data'))
+
+    return "Houston, we have a problem."
+
+
+#TODO: fix this and make it not a hardcoded url
+@app.route('/processed_data')
+def processed_data():
+    return render_template('processed_data.html')
+
+
+def analysis(data_filename, labels_filename):
+    # pre_process_data(data_filename)
+    pass
 
 
 if __name__ == '__main__':
