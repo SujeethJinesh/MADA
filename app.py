@@ -13,6 +13,8 @@ app = Flask(__name__)
 
 DEV = args.dev
 
+if DEV:
+    app.debug = True
 
 @app.route('/')
 def main():
