@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from werkzeug.utils import secure_filename
 import uuid
 import argparse
-from back_end.data_processing.data_pre_processing import pre_process_data
+import boto3
 
 # Check if being run on dev (production by default)
 parser = argparse.ArgumentParser()
@@ -12,6 +12,10 @@ args = parser.parse_args()
 app = Flask(__name__)
 
 DEV = args.dev
+
+s3 = boto3.resource('s3')
+
+BUCKET_NAME = 'mada-bucket'
 
 if DEV:
     app.debug = True
@@ -41,12 +45,15 @@ def upload_data():
         data_address = upload_address + data_filename
         labels_address = upload_address + labels_filename
 
+        # import ipdb; ipdb.set_trace()
+
         data_file.save(data_address)
         labels_file.save(labels_address)
 
+        s3.meta.client.upload_file(data_address, BUCKET_NAME, data_filename)
+
         analysis(data_filename, labels_filename)
 
-        # import ipdb; ipdb.set_trace()
 
         return redirect(url_for('processed_data'))
 
