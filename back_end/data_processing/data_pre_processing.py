@@ -129,13 +129,14 @@ def _multiOneHot(df, attribute_list):
     return df
 
 
-def getCleanData(file_path, attributes, binary_one_hot_map=None, normalize_list=None, multi_one_hot_list=None,
+def getCleanData(file_path, attributes=None, binary_one_hot_map=None, normalize_list=None, multi_one_hot_list=None,
                  cols_to_drop=None, row_num_to_drop=None):
     """
     :return: Cleaned data
     """
     # read in data
-    data = pd.read_csv(file_path, names=attributes)
+    if not (attributes is None):
+        data = pd.read_csv(file_path, names=attributes)
 
     # dropping rows we don't need
     if not (row_num_to_drop is None):

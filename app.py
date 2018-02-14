@@ -20,6 +20,7 @@ BUCKET_NAME = 'mada-bucket'
 if DEV:
     app.debug = True
 
+
 @app.route('/')
 def main():
     return render_template('index.html')
@@ -45,8 +46,6 @@ def upload_data():
         data_address = upload_address + data_filename
         labels_address = upload_address + labels_filename
 
-        # import ipdb; ipdb.set_trace()
-
         data_file.save(data_address)
         labels_file.save(labels_address)
 
@@ -54,13 +53,12 @@ def upload_data():
 
         analysis(data_filename, labels_filename)
 
-
         return redirect(url_for('processed_data'))
 
     return "Houston, we have a problem."
 
 
-#TODO: fix this and make it not a hardcoded url
+# TODO: fix this and make it not a hardcoded url
 @app.route('/processed_data')
 def processed_data():
     return render_template('processed_data.html')

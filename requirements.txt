@@ -1,3 +1,5 @@
+PIL
+boto3
 ipdb
 Flask==0.10.1
 itsdangerous==0.24
