@@ -1,5 +1,7 @@
 Taken from: https://github.com/bonniee/react-flask.
 
+MADA: Many Algorithms for Data Analysis.
+
 # React + Flask starter kit
 
 A quick starter repo that includes Flask and React, with Babel and Webpack. For proof-of-concept projects, workshop settings, etc where you don't want to worry about developer setup or writing config files.
